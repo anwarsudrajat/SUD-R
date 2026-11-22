@@ -1,36 +1,185 @@
-body {
-  font-family: system-ui, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100dvh; /* Mengunci tinggi pas sesuai layar HP tanpa scrollbar */
+  overflow: hidden;
+  background-color: #07080c;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Latar Aurora Samar Biru - Ungu - Kuning di Bagian Atas */
+.aurora-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.32;
+  animation: floatAurora 12s ease-in-out infinite alternate;
+}
+
+.orb-blue {
+  width: 260px;
+  height: 260px;
+  background: #2563eb;
+  top: -80px;
+  left: -40px;
+}
+
+.orb-purple {
+  width: 280px;
+  height: 280px;
+  background: #7c3aed;
+  top: -90px;
+  left: 35%;
+  animation-delay: -4s;
+}
+
+.orb-amber {
+  width: 220px;
+  height: 220px;
+  background: #eab308;
+  top: -70px;
+  right: -30px;
+  opacity: 0.22;
+  animation-delay: -8s;
+}
+
+@keyframes floatAurora {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(15px, 20px) scale(1.08); }
+}
+
+/* Penempatan Tengah Layar */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  background: #f4f4f9;
+  padding: 24px;
 }
 
-.card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Efek Liquid Glass ala iOS */
+.liquid-glass {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  padding: 32px 26px;
+  border-radius: 28px;
   text-align: center;
-  max-width: 400px;
-  width: 90%;
+  
+  /* Lapisan kaca transparan & pembiasan latar */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.09) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  
+  /* Pantulan cahaya tipis di tepi kaca */
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.28),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+  
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Kilau cahaya halus yang mengikuti sentuhan/kursor */
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 180px at var(--x, 50%) var(--y, 0%),
+    rgba(255, 255, 255, 0.14),
+    transparent 80%
+  );
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Indikator Status Kecil */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 18px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Tipografi ala iOS */
 h1 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: #111;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
 }
 
-p {
-  color: #555;
-  font-size: 0.95rem;
+.subtitle {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(235, 235, 245, 0.65);
+  line-height: 1.45;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  margin: 22px 0 16px;
 }
 
 .footer-note {
-  font-size: 10px;
-  color: #888;
-  margin-top: 1.5rem;
-}
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(235, 235, 245, 0.42);
+  line-height: 1.4;
+              }
