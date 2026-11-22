@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f2f2f7">
+  <title>Nama Kamu — Web Pribadi</title>
+  <meta name="description" content="Web pribadi Nama Kamu, siswa SMK Negeri 1 Babelan jurusan Teknik Elektronika Industri.">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Latar belakang blob warna-warni -->
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <!-- Tombol ganti tema -->
+  <button class="theme-btn glass" id="themeBtn" type="button" aria-label="Ganti tema terang/gelap">
+    <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+
+  <!-- Navigasi ala dock iOS -->
+  <nav class="dock glass" id="dock" aria-label="Navigasi utama">
+    <a href="#beranda" class="active">Beranda</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#skill">Skill</a>
+    <a href="#proyek">Proyek</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="beranda" class="hero">
+      <div class="hero-card glass reveal">
+        <div class="avatar" aria-hidden="true">NK</div>
+        <p class="eyebrow">Halo, gue</p>
+        <h1>Nama <span class="grad">Kamu</span></h1>
+        <p class="tagline">Siswa <strong>Teknik Elektronika Industri</strong> yang suka ngoprek rangkaian, nulis kode, dan bikin hal keren dari nol.</p>
+        <div class="chips">
+          <span class="chip">SMK Negeri 1 Babelan</span>
+          <span class="chip">Elektronika</span>
+          <span class="chip">Web</span>
+        </div>
+        <div class="actions">
+          <a href="#proyek" class="btn primary">Lihat Proyek</a>
+          <a href="#kontak" class="btn ghost glass-soft">Hubungi Gue</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="tentang">
+      <h2 class="reveal">Tentang</h2>
+      <div class="grid two">
+        <article class="card glass reveal">
+          <h3>Siapa gue?</h3>
+          <p>Gue siswa di SMK Negeri 1 Babelan, jurusan Teknik Elektronika Industri. Tiap hari berurusan sama komponen, mikrokontroler, dan sistem kontrol. Ganti paragraf ini pakai cerita lo sendiri ya.</p>
+        </article>
+        <article class="card glass reveal">
+          <h3>Lagi fokus ke</h3>
+          <ul class="list">
+            <li>Belajar mikrokontroler &amp; IoT</li>
+            <li>Dasar PLC dan otomasi industri</li>
+            <li>Bikin web &amp; tampilan yang rapi</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILL -->
+    <section id="skill">
+      <h2 class="reveal">Skill</h2>
+      <div class="grid three">
+        <article class="card glass reveal">
+          <h3>Elektronika Dasar</h3>
+          <div class="bar"><i data-level="80"></i></div>
+          <span class="pct">80%</span>
+        </article>
+        <article class="card glass reveal">
+          <h3>Mikrokontroler</h3>
+          <div class="bar"><i data-level="65"></i></div>
+          <span class="pct">65%</span>
+        </article>
+        <article class="card glass reveal">
+          <h3>HTML &amp; CSS</h3>
+          <div class="bar"><i data-level="60"></i></div>
+          <span class="pct">60%</span>
+        </article>
+        <article class="card glass reveal">
+          <h3>JavaScript</h3>
+          <div class="bar"><i data-level="40"></i></div>
+          <span class="pct">40%</span>
+        </article>
+        <article class="card glass reveal">
+          <h3>PLC &amp; Kontrol</h3>
+          <div class="bar"><i data-level="50"></i></div>
+          <span class="pct">50%</span>
+        </article>
+        <article class="card glass reveal">
+          <h3>Desain Rangkaian</h3>
+          <div class="bar"><i data-level="70"></i></div>
+          <span class="pct">70%</span>
+        </article>
+      </div>
+      <p class="note reveal">Angka di atas cuma contoh. Jujur aja sama diri sendiri, jangan dibagus-baguin.</p>
+    </section>
+
+    <!-- PROYEK -->
+    <section id="proyek">
+      <h2 class="reveal">Proyek</h2>
+      <div class="grid three">
+        <article class="card glass project reveal">
+          <div class="thumb t1" aria-hidden="true"></div>
+          <h3>Proyek Satu</h3>
+          <p>Deskripsi singkat proyek. Tulis apa yang dibikin, pakai apa, dan hasilnya gimana.</p>
+          <a href="#" class="link">Lihat detail →</a>
+        </article>
+        <article class="card glass project reveal">
+          <div class="thumb t2" aria-hidden="true"></div>
+          <h3>Proyek Dua</h3>
+          <p>Deskripsi singkat proyek. Contoh: alat otomatis berbasis sensor dan mikrokontroler.</p>
+          <a href="#" class="link">Lihat detail →</a>
+        </article>
+        <article class="card glass project reveal">
+          <div class="thumb t3" aria-hidden="true"></div>
+          <h3>Proyek Tiga</h3>
+          <p>Deskripsi singkat proyek. Contoh: web kecil buat nampilin data dari alat lo.</p>
+          <a href="#" class="link">Lihat detail →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak">
+      <h2 class="reveal">Kontak</h2>
+      <div class="grid two">
+        <article class="card glass reveal">
+          <h3>Ngobrol yuk</h3>
+          <p>Mau nanya, kolaborasi, atau sekadar nyapa? Pilih jalur yang lo suka.</p>
+          <div class="socials">
+            <a href="mailto:emailkamu@example.com" class="pill glass-soft">Email</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="pill glass-soft">Instagram</a>
+            <a href="https://github.com/" target="_blank" rel="noopener" class="pill glass-soft">GitHub</a>
+          </div>
+        </article>
+        <article class="card glass reveal">
+          <form id="contactForm" novalidate>
+            <label>Nama
+              <input type="text" name="nama" required autocomplete="name" placeholder="Nama lo">
+            </label>
+            <label>Pesan
+              <textarea name="pesan" rows="4" required placeholder="Tulis pesan..."></textarea>
+            </label>
+            <button class="btn primary" type="submit">Kirim lewat Email</button>
+            <p class="form-msg" id="formMsg" role="status"></p>
+          </form>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Nama Kamu. Dibikin pakai tangan sendiri.</p>
+  </footer>
+
+</body>
+</html>
