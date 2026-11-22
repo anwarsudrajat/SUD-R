@@ -120,6 +120,61 @@
     });
   }
 
+  /* ---------- Gerbang password ---------- */
+  var gate = document.getElementById('gate');
+  var PASSWORD = 'MAS ANWAR'; // ganti kalau mau password lain
+
+  function norm(s) { return s.trim().replace(/\s+/g, ' ').toUpperCase(); }
+
+  if (root.classList.contains('locked')) {
+    if (!gate) {
+      root.classList.remove('locked');
+    } else {
+      var guarded = document.querySelectorAll('main, #dock, #themeBtn, footer');
+      var setInert = function (on) {
+        guarded.forEach(function (el) {
+          if (on) el.setAttribute('inert', ''); else el.removeAttribute('inert');
+        });
+      };
+      setInert(true); // konten di belakang gerbang gak bisa difokus pakai Tab
+
+      var gForm = document.getElementById('gateForm');
+      var gPass = document.getElementById('gatePass');
+      var gMsg = document.getElementById('gateMsg');
+      var gEye = document.getElementById('gateEye');
+
+      gPass.focus({ preventScroll: true });
+
+      gEye.addEventListener('click', function () {
+        var show = gPass.type === 'password';
+        gPass.type = show ? 'text' : 'password';
+        gEye.textContent = show ? 'Sembunyi' : 'Lihat';
+        gEye.setAttribute('aria-label', show ? 'Sembunyikan password' : 'Tampilkan password');
+        gPass.focus({ preventScroll: true });
+      });
+
+      gForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (norm(gPass.value) === PASSWORD) {
+          try { sessionStorage.setItem('gate', 'ok'); } catch (err) {}
+          gMsg.textContent = '';
+          setInert(false);
+          gate.classList.add('out');
+          setTimeout(function () {
+            root.classList.remove('locked'); // scroll halaman aktif lagi di sini
+            window.scrollTo(0, 0);
+          }, 450);
+        } else {
+          gMsg.textContent = 'Password salah. Coba lagi.';
+          gForm.classList.remove('shake');
+          void gForm.offsetWidth; // restart animasi
+          gForm.classList.add('shake');
+          gPass.select();
+        }
+      });
+    }
+  }
+
   /* ---------- Tahun footer ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
