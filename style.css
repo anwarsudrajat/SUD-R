@@ -266,6 +266,75 @@ input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px
 input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: #ff453a; }
 .form-msg { min-height: 1.2em; font-size: 0.88rem; color: var(--muted); }
 
+/* ============ Gerbang password ============ */
+:root { --gate-bg: rgba(242, 242, 247, 0.72); }
+:root[data-theme="dark"] { --gate-bg: rgba(7, 7, 11, 0.72); }
+
+/* Selama gerbang kebuka, halaman di belakangnya gak bisa di-scroll */
+html.locked, html.locked body { overflow: hidden; }
+html:not(.locked) .gate { display: none; }
+
+.gate {
+  position: fixed; inset: 0;
+  z-index: 200;
+  overflow-y: auto;               /* kalau layar pendek, gerbangnya sendiri yang bisa di-scroll */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: var(--gate-bg);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  backdrop-filter: blur(40px) saturate(160%);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.gate.out { opacity: 0; transform: scale(1.03); pointer-events: none; }
+
+.gate-inner {
+  min-height: 100%;
+  display: grid; place-items: center;
+  padding: 24px 16px calc(24px + env(safe-area-inset-bottom));
+}
+.gate-card {
+  width: min(420px, 100%);
+  padding: 32px 26px;
+  border-radius: 36px;
+  text-align: center;
+  display: grid; gap: 14px;
+}
+.gate-card h2 { font-size: clamp(1.5rem, 6vw, 1.9rem); font-weight: 800; }
+.gate-card p { margin: 0; color: var(--muted); }
+.gate-icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 4px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5), 0 10px 26px rgba(10, 132, 255, 0.4);
+}
+.gate-field { position: relative; }
+.gate-field input { width: 100%; padding-right: 76px; text-align: left; }
+.gate-eye {
+  position: absolute; right: 8px; top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-soft);
+  color: var(--text);
+  font: inherit; font-size: 0.8rem; font-weight: 600;
+  cursor: pointer;
+}
+.gate-msg { min-height: 1.2em; font-size: 0.88rem; color: #ff453a !important; }
+.gate-card.shake { animation: shake 0.4s ease; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-9px); }
+  40%, 80% { transform: translateX(9px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gate, .gate.out { transition: none; }
+  .gate-card.shake { animation: none; }
+}
+
 /* ============ Footer ============ */
 footer { text-align: center; padding: 56px 16px 0; color: var(--muted); font-size: 0.88rem; }
 footer p { margin: 0; }
