@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Helvetica Neue", Helvetica, "Arimo", "Inter", Arial, sans-serif;
 }
 
 html, body {
   width: 100%;
-  height: 100dvh; /* Mengunci tinggi pas sesuai layar HP tanpa scrollbar */
+  height: 100dvh;
   overflow: hidden;
   background-color: #07080c;
   color: #f5f5f7;
-  font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Latar Aurora Samar Biru - Ungu - Kuning di Bagian Atas */
@@ -87,8 +87,6 @@ html, body {
   padding: 32px 26px;
   border-radius: 28px;
   text-align: center;
-  
-  /* Lapisan kaca transparan & pembiasan latar */
   background: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.09) 0%,
@@ -96,19 +94,15 @@ html, body {
   );
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  
-  /* Pantulan cahaya tipis di tepi kaca */
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow:
     0 24px 48px rgba(0, 0, 0, 0.55),
     inset 0 1px 1px rgba(255, 255, 255, 0.28),
     inset 0 -1px 1px rgba(255, 255, 255, 0.05);
-  
   overflow: hidden;
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Kilau cahaya halus yang mengikuti sentuhan/kursor */
 .liquid-glass::before {
   content: "";
   position: absolute;
@@ -122,7 +116,6 @@ html, body {
   opacity: 0.85;
 }
 
-/* Indikator Status Kecil */
 .status-pill {
   display: inline-flex;
   align-items: center;
@@ -133,7 +126,7 @@ html, body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   color: rgba(255, 255, 255, 0.78);
   margin-bottom: 18px;
 }
@@ -152,12 +145,12 @@ html, body {
   50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-/* Tipografi ala iOS */
+/* Tipografi ala Helvetica */
 h1 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
-  letter-spacing: -0.03em;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 100%);
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.78) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
@@ -166,8 +159,8 @@ h1 {
 .subtitle {
   font-size: 15px;
   font-weight: 400;
-  letter-spacing: -0.01em;
-  color: rgba(235, 235, 245, 0.65);
+  letter-spacing: -0.015em;
+  color: rgba(235, 235, 245, 0.68);
   line-height: 1.45;
 }
 
@@ -181,6 +174,7 @@ h1 {
 .footer-note {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(235, 235, 245, 0.42);
+  letter-spacing: -0.01em;
+  color: rgba(235, 235, 245, 0.45);
   line-height: 1.4;
-              }
+}
