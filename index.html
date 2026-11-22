@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="locked">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f2f2f7">
-  <title>SUD-R — Personal Web</title>
-  <meta name="description" content="Web pribadi Nama Kamu, siswa SMK Negeri 1 Babelan jurusan Teknik Elektronika Industri.">
+  <title>SUD-R — Personal Web Gue</title>
+  <meta name="description" content="Web pribadi si Anwar, siswa SMK Negeri 1 Babelan jurusan Teknik Elektronika Industri.">
+  <!-- Kalau sudah pernah buka gerbang di tab ini, jangan tampilkan lagi (cegah kedip) -->
+  <script>try{if(sessionStorage.getItem('gate')==='ok')document.documentElement.classList.remove('locked')}catch(e){}</script>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
 <body>
+
+  <!-- GERBANG: halaman "sedang dikembangkan" + password -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="gate-inner">
+      <form class="gate-card glass" id="gateForm" novalidate>
+        <div class="gate-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>
+        </div>
+        <h2 id="gateTitle">Web ini sedang dikembangkan</h2>
+        <p>Belum siap dipamerin. Kalau tetap mau lihat, masukkan password dulu.</p>
+        <div class="gate-field">
+          <input type="password" id="gatePass" placeholder="Password" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Password" required>
+          <button type="button" id="gateEye" class="gate-eye" aria-label="Tampilkan password">Lihat</button>
+        </div>
+        <p class="gate-msg" id="gateMsg" role="alert"></p>
+        <button class="btn primary" type="submit">Masuk</button>
+      </form>
+    </div>
+  </div>
 
   <!-- Latar belakang blob warna-warni -->
   <div class="bg" aria-hidden="true">
@@ -167,7 +188,7 @@
   </main>
 
   <footer>
-    <p>© <span id="year"></span> Nama Kamu. Dibikin pakai tangan sendiri.</p>
+    <p>© <span id="year"></span> Muhamad Anwar Sudrajat</p>
   </footer>
 
 </body>
